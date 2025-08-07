@@ -1,5 +1,5 @@
 import { Scenes, Markup } from 'telegraf';
-import githubService from '../../services/githubService.js';
+import { octokit } from '../../services/githubService.js';
 import { config } from '../../config/index.js';
 
 const reviewPRScene = new Scenes.BaseScene('reviewpr_scene');
@@ -40,7 +40,6 @@ reviewPRScene.on('callback_query', async (ctx) => {
     await ctx.editMessageText(`Submitting review for PR #${prNumber}...`);
 
     try {
-        const { octokit } = await githubService;
         await octokit.rest.pulls.createReview({
             owner: config.repo.owner,
             repo: config.repo.name,
