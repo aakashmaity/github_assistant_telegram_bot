@@ -1,12 +1,12 @@
 
-import {config} from '../../config/index.js';
+import { config } from '../../config/index.js';
 import { octokit } from '../../services/githubService.js';
 
 export default (bot) => {
   bot.command('listprs', async (ctx) => {
     await ctx.reply('Fetching open pull requests...');
     try {
-      console.log("octakit instance:", octokit.pulls);
+      // console.log("octakit instance:", octokit.pulls);
       const { data: prs } = await octokit.rest.pulls.list({
         owner: config.repo.owner,
         repo: config.repo.name,

@@ -1,5 +1,5 @@
 import { Scenes } from "telegraf";
-import {octokit} from "../../services/githubService.js";
+import { octokit } from "../../services/githubService.js";
 import { config } from "../../config/index.js";
 
 
