@@ -7,7 +7,12 @@ const createPRScene = new Scenes.BaseScene('createpr_scene');
 
 createPRScene.enter((ctx) => {
     ctx.scene.state.prData = {};
-    ctx.reply('Let\'s create a new Pull Request! \nWhat is the title?');
+    ctx.reply('What is the title?');
+});
+
+createPRScene.command('exit', (ctx) => {
+    ctx.reply("Exit from PR create process.");
+    ctx.scene.leave()
 });
 
 createPRScene.on('text', async (ctx) => {
@@ -15,13 +20,13 @@ createPRScene.on('text', async (ctx) => {
 
     if (!state.title) {
         state.title = ctx.message.text;
-        ctx.reply('What is the source branch (the "head" branch)?');
+        ctx.reply('Please mention the source branch?');
     } else if (!state.head) {
         state.head = ctx.message.text;
-        ctx.reply('What is the target branch (the "base" branch, e.g., `main`)?');
+        ctx.reply('Please mention the target branch?');
     } else {
         state.base = ctx.message.text;
-        await ctx.reply(`Creating PR: "${state.title}"\nFrom \`${state.head}\` to \`${state.base}\`...`);
+        const tempMsg = await ctx.reply(`Creating PR: "${state.title}"\nFrom \`${state.head}\` to \`${state.base}\`...`);
         try {
             const { data: pr } = await octokit.rest.pulls.create({
                 owner: config.repo.owner,
@@ -29,20 +34,18 @@ createPRScene.on('text', async (ctx) => {
                 title: state.title,
                 head: state.head,
                 base: state.base,
-                body: `PR created via Telegram by @${ctx.update.message.from.first_name}`
+                body: `PR created via Telegram by ${ctx.update.message.from.first_name}`
             });
             await ctx.reply(`✅ Successfully created PR #${pr.number}!\n${pr.html_url}`);
         } catch (error) {
             console.error("Error creating PR:", error);
             await ctx.reply(`😕 Failed to create PR. GitHub said: ${error.message}`);
+        } finally {
+            await ctx.telegram.deleteMessage(tempMsg.chat.id, tempMsg.message_id);
         }
 
-        // End the scene
         return ctx.scene.leave();
     }
 })
-
-
-createPRScene.command('exit', (ctx) => ctx.scene.leave());
 
 export default createPRScene;

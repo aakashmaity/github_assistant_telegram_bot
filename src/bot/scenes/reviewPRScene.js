@@ -6,9 +6,13 @@ const reviewPRScene = new Scenes.BaseScene('reviewpr_scene');
 
 reviewPRScene.enter((ctx) => {
     ctx.scene.state.reviewData = {};
-    ctx.reply('Let\'s review a Pull Request!\n\nWhat is the PR number? (or /exit to cancel)');
+    ctx.reply('Enter the PR number? (or /exit to cancel)');
 });
 
+reviewPRScene.command('exit', (ctx) => {
+    ctx.reply("Exit from review process.");
+    ctx.scene.leave()
+});
 
 reviewPRScene.hears(/^\d+$/, (ctx) => {
     const state = ctx.scene.state.reviewData;
@@ -37,7 +41,7 @@ reviewPRScene.on('callback_query', async (ctx) => {
     const event = ctx.callbackQuery.data;
     const { prNumber, comment } = ctx.scene.state.reviewData;
 
-    await ctx.editMessageText(`Submitting review for PR #${prNumber}...`);
+    const tempMsg = await ctx.editMessageText(`Submitting review for PR #${prNumber}`);
 
     try {
         await octokit.rest.pulls.createReview({
@@ -50,11 +54,13 @@ reviewPRScene.on('callback_query', async (ctx) => {
         await ctx.reply(`✅ Successfully submitted review for PR #${prNumber}.`);
     } catch (error) {
         await ctx.reply(`😕 Failed to create review. GitHub said: ${error.message}`);
+    } finally {
+        await ctx.telegram.deleteMessage(tempMsg.chat.id, tempMsg.message_id);
     }
 
     return ctx.scene.leave();
 });
 
-reviewPRScene.command('exit', (ctx) => ctx.scene.leave());
+
 
 export default reviewPRScene;

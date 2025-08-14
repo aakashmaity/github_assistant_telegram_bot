@@ -9,7 +9,7 @@ async function startApp() {
   console.log('Bot initialized.');
 
   const app = express();
-  const githubWebhookHandler = await getWebhookHandler(bot);
+  const githubWebhookHandler = getWebhookHandler(bot);
   app.use(githubWebhookHandler);
 
   app.listen(config.server.port, () => {
