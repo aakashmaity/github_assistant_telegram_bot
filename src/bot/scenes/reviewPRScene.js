@@ -53,6 +53,7 @@ reviewPRScene.on('callback_query', async (ctx) => {
         });
         await ctx.reply(`✅ Successfully submitted review for PR #${prNumber}.`);
     } catch (error) {
+        console.error("Error creating review:", error);
         await ctx.reply(`😕 Failed to create review. GitHub said: ${error.message}`);
     } finally {
         await ctx.telegram.deleteMessage(tempMsg.chat.id, tempMsg.message_id);

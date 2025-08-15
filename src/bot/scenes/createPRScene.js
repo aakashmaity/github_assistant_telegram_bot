@@ -42,9 +42,9 @@ createPRScene.on('text', async (ctx) => {
             await ctx.reply(`😕 Failed to create PR. GitHub said: ${error.message}`);
         } finally {
             await ctx.telegram.deleteMessage(tempMsg.chat.id, tempMsg.message_id);
+            
         }
-
-        return ctx.scene.leave();
+        ctx.scene.leave();
     }
 })
 

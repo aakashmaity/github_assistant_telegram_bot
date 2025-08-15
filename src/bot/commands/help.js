@@ -7,6 +7,7 @@ export default (bot) => {
             "/merge - Merge a Pull Request\n" +
             "/reviewpr - Review a PR\n" +
             "/assign - Assign a Pull Request to user(s)\n" +
+            "/addcollaborator - Add a collaborator to the Project repo\n" +
             "/start - Start the bot\n" +
             "/help - Show this help message\n" +
             "/exit - Exit"

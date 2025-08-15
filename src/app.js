@@ -13,7 +13,7 @@ async function startApp() {
   app.use(githubWebhookHandler);
 
   app.listen(config.server.port, () => {
-    console.log(`Server listening for webhooks at http://localhost:${config.server.port}/api/github`);
+    console.log(`Server listening for webhooks at http://localhost:${config.server.port}/webhook`);
   });
 
   await bot.launch(() => {
