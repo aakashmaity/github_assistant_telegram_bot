@@ -51,5 +51,4 @@ createAssignScene.on('text', async (ctx) => {
     }
 })
 
-
 export default createAssignScene;

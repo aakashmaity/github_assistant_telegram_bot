@@ -8,13 +8,14 @@ import { config } from '../config/index.js';
 import createPRScene from './scenes/createPRScene.js';
 import reviewPRScene from './scenes/reviewPRScene.js';
 import assignPRScene from './scenes/assignPRScene.js';
+import mergePRScene from './scenes/mergePRScene.js';
 
 const __filename = fileURLToPath(import.meta.url);
 const __dirname = path.dirname(__filename);
 
 async function initializeBot() {
   const bot = new Telegraf(config.telegram.botToken);
-  const stage = new Scenes.Stage([createPRScene, reviewPRScene, assignPRScene]);
+  const stage = new Scenes.Stage([createPRScene, reviewPRScene, assignPRScene, mergePRScene]);
 
   bot.use(session());
   bot.use(stage.middleware());
