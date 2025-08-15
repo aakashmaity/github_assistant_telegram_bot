@@ -2,6 +2,14 @@
 
 A powerful Telegram bot that helps manage GitHub projects by providing commands to create pull requests, assign reviewers, merge PRs, and more. The bot integrates with GitHub's API and webhooks to provide real-time project management capabilities.
 
+## Demo Project
+
+This is the sample demo project being managed using the Telegram bot:
+
+**Demo Project Repository**: [aakashmaity/demo-test-project](https://github.com/aakashmaity/demo-test-project)
+
+The demo project showcases how the bot can effectively manage GitHub repositories through Telegram commands, demonstrating all the features and capabilities in action.
+
 ## Features
 
 - 🤖 **Telegram Bot Integration** - Manage GitHub projects directly from Telegram
@@ -53,8 +61,8 @@ GITHUB_INSTALLATION_ID=<your_installation_id>  (optional)
 GITHUB_TOKEN=<your_github_personal_access_token>
 
 # Repository Configuration
-GITHUB_USERNAME=your_github_username
-GITHUB_REPO_NAME=your_repository_name
+GITHUB_USERNAME=<your_github_username>
+GITHUB_REPO_NAME=<your_repository_name>
 
 # Server Configuration
 PORT=3000
