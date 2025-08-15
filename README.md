@@ -89,7 +89,7 @@ This will start the server with nodemon for automatic reloading during developme
 The application will start and:
 - Initialize the Telegram bot
 - Start the Express server on the configured port
-- Listen for GitHub webhooks at `/api/github`
+- Listen for GitHub webhooks at `/webhook`
 - Launch the Telegram bot
 
 ## Available Commands
@@ -98,6 +98,7 @@ The bot supports the following commands:
 
 - `/start` - Initialize the bot and show welcome message
 - `/help` - Display available commands and their usage
+- `/prs` - Show all Pull requests
 - `/createpr` - Create a new pull request
 - `/openprs` - List all open pull requests
 - `/assign` - Assign reviewers to a pull request
