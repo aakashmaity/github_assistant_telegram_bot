@@ -29,9 +29,9 @@ createAssignScene.on('text', async (ctx) => {
     }
     if (state?.assignee) return; // Prevent re-triggering
    
-    state.assignee = ctx.message.text.split(',').map(user => user.trim());
+    state.assignee = ctx.message.text?.split(',').map(user => user.trim());
 
-    const tempMsg = await ctx.reply(`Assigning PR #${state.prNumber} to ${state.assignee.join(', ')}...`);
+    const tempMsg = await ctx.reply(`Assigning PR #${state.prNumber} to ${state.assignee?.join(', ')}...`);
     try {
         const {data } = await octokit.rest.issues.addAssignees({
             owner: config.repo.owner,
@@ -40,7 +40,7 @@ createAssignScene.on('text', async (ctx) => {
             assignees: state.assignee
         })
       
-        await ctx.reply(`✅ Successfully assigned PR #${state.prNumber} to ${state.assignees.join(', ')}.`);
+        await ctx.reply(`✅ Successfully assigned PR #${state.prNumber} to ${state.assignees?.join(', ')}.`);
         ctx.scene.leave();
 
     } catch (error) {
