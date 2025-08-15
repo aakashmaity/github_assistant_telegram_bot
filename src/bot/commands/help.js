@@ -1,16 +1,17 @@
 export default (bot) => {
     bot.command('help', (ctx) => {
         ctx.reply("Available commands:\n\n" +
-            "/prs - Get all PRs\n" +
-            "/openprs - Get open PRs\n" +
-            "/createpr - Create a new PR\n" +
-            "/merge - Merge a Pull Request\n" +
-            "/reviewpr - Review a PR\n" +
-            "/assign - Assign a Pull Request to user(s)\n" +
-            "/addcollaborator - Add a collaborator to the Project repo\n" +
+
             "/start - Start the bot\n" +
-            "/help - Show this help message\n" +
-            "/exit - Exit"
+            "/help - Display available commands and their usage\n" +
+            "/exit - Exit" +
+            "/prs - Show all Pull requests\n" +
+            "/openprs - List all open pull requests\n" +
+            "/createpr - Create a new pull request\n" +
+            "/merge - Merge a Pull Request\n" +
+            "/reviewpr - Review a Pull request\n" +
+            "/assign - Assign a Pull Request to user(s)\n" +
+            "/addcollaborator - Add a collaborator to the Project repo\n"
         );
     });
 }
