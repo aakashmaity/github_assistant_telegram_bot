@@ -26,8 +26,8 @@ Before running this project, make sure you have:
 ### 1. Clone the Repository
 
 ```bash
-git clone https://github.com/aakashmaity/github_assistant_tgbot.git
-cd github_assistant_tgbot
+git clone https://github.com/aakashmaity/github_assistant_telegram_bot
+cd github_assistant_telegram_bot
 ```
 
 ### 2. Install Dependencies
@@ -166,9 +166,6 @@ The application logs important information to the console. Check for:
 4. Push to the branch (`git push origin feature/amazing-feature`)
 5. Open a Pull Request
 
-## License
-
-This project is licensed under the ISC License.
 
 ## Support
 
