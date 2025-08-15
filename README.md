@@ -183,5 +183,3 @@ If you encounter any issues or have questions, please:
 3. Open an issue on the repository
 
 ---
-
-**Note**: Make sure to keep your `.env` file and private keys secure and never commit them to version control.
