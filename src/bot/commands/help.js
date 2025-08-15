@@ -4,7 +4,7 @@ export default (bot) => {
 
             "/start - Start the bot\n" +
             "/help - Display available commands and their usage\n" +
-            "/exit - Exit" +
+            "/exit - Exit\n" +
             "/prs - Show all Pull requests\n" +
             "/openprs - List all open pull requests\n" +
             "/createpr - Create a new pull request\n" +
