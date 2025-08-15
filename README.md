@@ -29,7 +29,7 @@ Before running this project, make sure you have:
 - A Telegram bot token (get from [@BotFather](https://t.me/botfather))
 - GitHub App setup (for enhanced API access)
 
-## Installation
+## Get Started
 
 ### 1. Clone the Repository
 
